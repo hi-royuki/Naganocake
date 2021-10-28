@@ -1,0 +1,8 @@
+ja:
+  enums:
+    order:
+      zz:
+        credit_card: 'クレジットカード'
+        transfer: '銀行振込'
+        
+        

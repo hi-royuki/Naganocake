@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="d-flex aligin-items-center">
+      <h2 class="p-3 md-10 bg-secondary text-white">商品一覧</h2>
+    </div>
+
+      <div class="text-right">
+       <%= link_to "＋", new_admin_item_path, class: "btn btn-outline-secondary" %>
+      </div>
+
+      <table class="table table-striped bg-light">
+      <tr>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <!--<th>ステータス</th>-->
+      </tr>
+      <% @items.each do |item| %>
+        <tr>
+          <td><%= item.id %></td>
+          <td><%= link_to item.name, admin_item_path(item) %></td>
+          <td><%= item.price %></td>
+          <td><%= item.genre.name %></td>
+          <!--<td><%= item.is_active %></td>-->
+        </tr>
+      <% end %>
+
+    </div>
+</div>
+

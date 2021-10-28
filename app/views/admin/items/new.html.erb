@@ -1,2 +1,65 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<div class="container">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="d-flex aligin-items-center">
+      <h2 class="p-3 md-10 bg-secondary text-white">商品新規登録</h2>
+    </div>
+      
+      <%= form_with model: @item, url: admin_items_path, local: true do |f| %>
+          
+          <div class="form-group has-icon">
+            <tr>
+              <th>商品画像</th>
+              <td><%= f.attachment_field :image %></td>
+            </tr>
+          </div>
+          
+          <div class="form-group has-icon">
+            <tr>
+              <th>商品名</th>
+              <td><%= f.text_field :name, class:"form-control" %></td>
+            </tr>
+          </div>
+          
+          <div class="form-group has-icon">
+            <tr>
+              <th>商品説明</th>
+              <td><%= f.text_area :introduction, class:"form-control" %></td>
+            </tr>
+          </div>
+          
+          <div class="form-group has-icon">
+            <tr>
+            <th>ジャンル</th>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %></td>
+            </tr>
+          </div>
+          
+          <div class="form-group has-icon">
+            <tr>
+              <th>税抜価格</th>
+              <td><%= f.text_field :price, class:"form-control" %></td>
+            </tr>
+          </div>
+          
+          <!--<div class="form-group has-icon">-->
+          <!--  <tr>-->
+          <!--    <th>販売ステータス</th>-->
+          <!--    <td>-->
+        
+          <!--    </td>-->
+          <!--　</tr>-->
+          <!--</div>-->
+          
+          <div class="form-group">
+            <tr>
+              <th></th>
+              <td>
+                <%= f.submit "新規登録", class:"btn btn-outline-success" %>
+              </td>
+            </tr>
+          </div>
+          
+        <% end %>
+  
+  </div>
+</div>
