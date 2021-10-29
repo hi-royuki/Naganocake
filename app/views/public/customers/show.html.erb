@@ -1,2 +1,60 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<div class="container">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="d-flex aligin-items-center">
+      <h3 class="p-3 md-10 bg-secondary text-white">マイページ</h3>
+    </div>
+
+    <table>
+      <tr>
+        <th>登録情報</th>
+        <th><%= link_to "編集する", edit_customers_path, class: "btn btn-outline-success" %></th>
+      </tr>
+    </table>
+
+    <table class="table table-bordered">
+      <tbody>
+        <thead>
+        <tr>
+          <th class ="carum_title">氏名</th>
+          <td class ="carum_date"><%= @customer.first_name %> <%= @customer.last_name %></td>
+        </tr>
+
+         <tr>
+          <th class ="carum_title">カナ</th>
+          <td class ="carum_date"><%= @customer.first_name_kana %> <%= @customer.last_name_kana %></td>
+        </tr>
+         <tr>
+          <th class ="carum_title">郵便番号</th>
+          <td class ="carum_date"><%= @customer.postal_code %></td>
+        </tr>
+         <tr>
+          <th class ="carum_title">住所</th>
+          <td class ="carum_date"><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <th class ="carum_title">電話番号</th>
+          <td class ="carum_date"><%= @customer.telephone_number %></td>
+        </tr>
+        <tr>
+          <th class ="carum_title">住所</th>
+          <td class ="carum_date"><%= @customer.email %></td>
+        </tr>
+        </thead>
+      </tbody>
+    </table>
+
+    <table>
+      <tr>
+        <th>配送先</th>
+        <th><%= link_to "一覧を見る", addresses_path, class: "btn btn-info" %></th>
+      </tr>
+      <tr>
+        <th>注文履歴</th>
+        <th><%= link_to "一覧を見る", orders_path, class: "btn btn-info" %></th>
+      </tr>
+    </table>
+
+
+
+  </div>
+</div>
