@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="d-flex aligin-items-center">
+      <h3 class="p-3 md-10 bg-secondary text-white"><%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細ページ</h3>
+    </div>
+    <div class="row">
+      <table class="table">
+
+      <tr>
+       <th class="col-xs-2">会員ID</th>
+       <td class="col-xs-10"><%= @customer.id %></td>
+      </tr>
+
+      <tr>
+       <th class="col-xs-2">氏名</th>
+       <td class="col-xs-10"><%= @customer.first_name %> <%= @customer.last_name %></td>
+      </tr>
+
+      <tr>
+       <th class="col-xs-2">フリガナ</th>
+       <td class="col-xs-10"><%= @customer.first_name_kana %> <%= @customer.last_name_kana %></td>
+      </tr>
+
+      <tr>
+       <th class="col-xs-2">郵便番号</th>
+       <td class="col-xs-10"><%= @customer.postal_code %></td>
+      </tr>
+
+      <tr>
+       <th class="col-xs-2">住所</th>
+       <td class="col-xs-10"><%= @customer.address %></td>
+      </tr>
+
+      <tr>
+       <th class="col-xs-2">電話番号</th>
+       <td class="col-xs-10"><%= @customer.telephone_number %></td>
+      </tr>
+
+      <tr>
+       <th class="col-xs-2">メールアドレス</th>
+       <td class="col-xs-10"><%= @customer.email %></td>
+      </tr>
+
+      <tr>
+       <th class="col-xs-2">会員ステータス</th>
+       <td class="col-xs-10"></td>
+      </tr>
+
+     </table>
+     <table>
+      <tr>
+       <th></th>
+      </tr>
+      
+     </table>
+    </div>
+  </div>
+</div>
