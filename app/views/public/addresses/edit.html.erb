@@ -1,2 +1,38 @@
-<h1>Public::Addresses#edit</h1>
-<p>Find me in app/views/public/addresses/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="d-flex aligin-items-center">
+      <h3 class="p-3 md-10 bg-secondary text-white">配送先編集</h3>
+    </div>
+
+
+     <!--urlをつけていたためpathエラーがでた。-->
+     <%= form_with model: @address, local: true do |f| %>
+     <table class="table table-borderless">
+        <div class="form-group ">
+        <tr>
+          <th>郵便番号(ハイフンなし)</th>
+          <td><%= f.text_field :postal_code, autofocus: true, placeholder: "000000" %></td>
+        </tr>
+        </div>
+
+        <div class="form-group ">
+        <tr>
+          <th>住所</th>
+          <td><%= f.text_field :address, autofocus: true, placeholder: "東京都新宿区新宿１−１−１ーsinzyuku101" %></td>
+        </tr>
+        </div>
+
+        <div class="form-group ">
+        <tr>
+          <th>宛名</th>
+          <td><%= f.text_field :name, autofocus: true, placeholder: "令和太郎" %></td>
+          <td><%= f.submit "変更内容を保存する", class: "btn btn-primary"%></td>
+        </tr>
+        </div>
+
+
+        <% end %>
+
+
+  </div>
+</div>
