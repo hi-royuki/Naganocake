@@ -2,8 +2,77 @@
   <div class="col-md-10 col-md-offset-1">
     <div class="d-flex aligin-items-center">
       <h3 class="p-3 md-10 bg-secondary text-white">会員情報編集</h3>
-      
+
     </div>
+        
+    <div class="row">
+
+      <table class="table table-borderless">
+      <%= form_with model:@customer, url:customers_path, local:true do |f| %>
+
+          <!--form-groupで空欄時にinputにした文字が出る-->
+          <div class="form-group">
+            <tr>
+              <th for="inputName">氏名</th>
+              <td>
+                <%= f.text_field :first_name, autofocus: true, id:"inputFirst_name", placeholder:"姓" %>
+                <%= f.text_field :last_name, autofocus: true, id:"inputLast_name", placeholder:"名" %>
+              </td>
+            </tr>
+
+
+          <div class="form-group">
+          <tr>
+            <th for="inputName">フリガナ</th>
+            <td>
+              <%= f.text_field :first_name_kana, autofocus: true, id:"inputFirst_name_kana", placeholder:"セイ" %> <%= f.text_field :last_name_kana, autofocus: true, id:"inputLast_name_kana", placeholder:"メイ" %>
+            </td>
+          </tr>
+        </div>
+
+        <div class="form-group">
+          <tr>
+            <th for="inputPostal_code">郵便番号</th>
+            <td><%= f.text_field :postal_code, autofocus: true, id:"inputPostal_code", placeholder:"郵便番号" %></td>
+          </tr>
+        </div>
+
+        <div class="form-group">
+          <tr>
+            <th for="inputAddress">住所</th>
+            <td><%= f.text_field :address, autofocus: true, id:"inputAddress", placeholder:"住所" %></td>
+          </tr>
+        </div>
+
+
+        <div class="form-group">
+          <tr>
+            <th for="inputTelephone_number">電話番号</th>
+            <td><%= f.text_field :telephone_number, autofocus: true, id:"inputTelephone_number", placeholder:"電話番号" %></td>
+          </tr>
+        </div>
+
+        <div class="form-group">
+          <tr>
+            <th for="inputEmail">メールアドレス</th>
+            <td><%= f.text_field :email, autofocus: true, id:"inputEmail", placeholder:"メールアドレス" %></td>
+          </tr>
+        </div>
+
+
+      　</div>
+
+      </table>
+      <div class="form-group">
+        <%= f.submit "編集内容を保存", class: "btn btn-outline-primary" %>
+      </div>
+
+      <div class="form-group">
+        <%= link_to "退会する", unsubscribe_customers_path(@customer), class: "btn btn-danger" %>
+      </div>
+
+      <% end %>
+
+   </div>
   </div>
 </div>
-    
