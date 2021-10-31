@@ -8,6 +8,7 @@ class Public::CustomersController < ApplicationController
   end
   
   def update
+    
   end
 
   def unsubscribe
