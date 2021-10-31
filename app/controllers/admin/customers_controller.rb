@@ -1,5 +1,6 @@
 class Admin::CustomersController < ApplicationController
-
+  
+ before_action :authenticate_admin!
 # 管理者ページの顧客のコントローラ
 
   def index
