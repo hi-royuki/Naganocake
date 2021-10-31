@@ -27,6 +27,7 @@ end
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
 
+
     # 7つ以外のアクションがある時は，collection(idなし)とmember(id含む)を使って指定する。
     resources :orders, only: [:new, :create, :index, :show] do
       collection do
