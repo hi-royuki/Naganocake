@@ -7,7 +7,7 @@ class Customers::SessionsController < Devise::SessionsController
   # def new
   #   super
   # end
-  
+
 
   # POST /resource/sign_in
   # def create
@@ -25,4 +25,19 @@ class Customers::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  protected
+  def reject_customer
+    @customer = Customer.find_by(email: params[:customer][:email].downcase)
+    if @customer
+      if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false))
+        flash[:error] = "退会済みです。"
+        redirect_to customers_sign_up_path
+      end
+    else
+      flash[:alert] = "必須項目を入力してください"
+    end
+   
+  end
 end
+
+
