@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+  get 'homes/top'
   root to: 'public/homes#top'
   devise_scope :customer do
   get '/customers/sign_up', to: 'customers/registrations#new'
