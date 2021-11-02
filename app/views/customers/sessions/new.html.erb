@@ -12,12 +12,12 @@
         <th>メールアドレス</th>
         <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
       </tr>
-      
+
       <tr>
         <th>パスワード</th>
         <td><%= f.password_field :password, autocomplete: "current-password" %></td>
       </tr>
-      
+
       <div class="actions">
       <tr>
         <th></th>
@@ -25,17 +25,17 @@
       </tr>
       </div>
     </table>
-   
 
-    
-    
+
+
+
    <div class="d-flex aligin-items-center">
     <p class="p-2 md-5 bg-light text-secondary">会員登録がお済でない方</p>
    </div>
     <p class="row"><%= link_to "こちら", customers_sign_up_path %>から新規登録をお願いします</p>
   </div>
 </div>
-   
+
 <% end %>
 
 
