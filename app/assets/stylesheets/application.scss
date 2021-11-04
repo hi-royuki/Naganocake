@@ -18,3 +18,13 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+.notice {
+    color: white;
+    background-color: lightBlue;
+    text-align: center;
+}
+
+ .alert {
+    background-color: alert_orange;
+    text-align: center;
+  }
