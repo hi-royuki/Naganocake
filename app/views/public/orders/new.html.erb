@@ -2,8 +2,26 @@
 <div class="container">
   <div class="row">
     <div class="d-flex aligin-items-center">
-      <h3 class="p-3 md-10 bg-secondary text-white">ショッピングカート</h3>
+      <h3 class="p-3 md-10 bg-secondary text-white">注文情報入力</h3>
     </div>
   </div>
+  <%= form_with model: @order, url: confirm_orders_path, method: :post, local: true do |f| %>
+  <div class="form-group">
+    <h2>支払い方法</h2>
+    <!--enum記述済，日本語化済-->
+
+    <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+    <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+
+    <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+    <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
+
+  </div>
+
+  <div class="form-group">
+    <h2>お届け先</h2>
+    <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
+  </div>
+  <% end %>
 
 </div>
