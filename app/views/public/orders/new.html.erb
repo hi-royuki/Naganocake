@@ -21,47 +21,41 @@
   <div class="form-group">
     <h2>お届け先</h2>
 
-      <div class="col-sm-5">
-      <div>
         <%= f.radio_button :address_id, 1 %>
         <%= f.label :address, 'ご自身の住所'  %></br>
         <%= current_customer.postal_code %><%= current_customer.address %></br>
-        <%= current_customer.last_name %><%= current_customer.first_name %>
-      </div>
-
-    <div class="col-sm-5">
-      <div>
+        <%= current_customer.first_name %><%= current_customer.last_name %></br>
+   
+    
         <%= f.radio_button :address_id, 2 %>
         <%= f.label :address_select_id, '登録済み住所から選択' %></br>
-        <%= f.collection_select :address_select_id, current_customer.addresses, :id, :full_address %>
+      <div class="form-group">
+        <%= f.collection_select :address_select_id, current_customer.addresses, :id, :full_address, { prompt: '選択してください' }, class: "form-control" %>
       </div>
 
-      <div>
+     
+
         <%= f.radio_button :address_id, 3 %>
         <%= f.label :address, '新しいお届け先' %></br>
 
-        <div class="form-group row">
+        
           <%= f.label :postal_code,"郵便番号（ハイフンなし）" , class:"col-sm-7 col-form-label" %><%= f.text_field :postal_code, class:"form-control" %>
-        </div>
-        <div class="form-group row">
+        
+        
           <%= f.label :address,"住所" , class:"col-sm-5 col-form-label" %>
           <%= f.text_field :address, class:"form-control" %>
-        </div>
-        <div class="form-group row">
+      
+   
           <%= f.label :name,"宛名" , class:"col-sm-5 col-form-label" %>
           <%= f.text_field :name, class:"form-control" %>
-        </div>
-      </div>
+      
+      
 
-        <div>
+        <div class="p-3 md-3">
           <%= f.submit "確認画面へ進む", class: "btn btn-success text-center" %>
         </div>
 
 
-
-
-
   </div>
-  <% end %>
-
 </div>
+<% end %>

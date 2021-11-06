@@ -43,7 +43,13 @@
 
       <tr>
        <th class="col-xs-2">会員ステータス</th>
-       <td class="col-xs-10"></td>
+       <td class="col-xs-10">
+        <% if @customer.is_active %>
+        <span class="green">有効</span>
+        <% else %>
+        <span class="secondary">退会</span>
+        <% end %>
+        </td>
       </tr>
 
      </table>
