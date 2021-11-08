@@ -1,15 +1,32 @@
 <div class="container">
     <div class="main-container">
-      
+
         <div class="jumbotron text-center" style="background-img: images/top.jpg; background-size:cover;">
         <p>ようこそ、ながのCAKEへ！</p>
         <p>このサイトは、ケーキ販売のECサイトになります。</p>
         <p>会員でない方も商品の閲覧はできますが、</p>
         <p>購入には会員登録が必要になります。</p>
         </div>
-      
-    </div> 
-  
-  
- 
-</div>    
+
+    </div>
+    <h2 class="new-items">新着商品</h2><br>
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <% @items.each do |item| %>
+        <div class="col-xs-3">
+            <div class=" mb-3">
+                <div class="item">
+                    <%= link_to item_path(item.id) do %>
+                    <%= attachment_image_tag item, :image, format: 'jpeg', class: "bd-placeholder-img card-img-top", fallback: item.image_id, height: "180" %>
+                    <% end %>
+                    <h5 class="item-name"><%= item.name %></h5>
+                    <p class="item-price">￥<%= item.price.to_s(:delimited, delimiter: ',') %></p>
+                    <%= link_to "この商品を見る", item_path(item.id), class: "btn btn-primary" %>
+               </div>
+            </div>
+        </div>
+    <% end %>
+    </div>
+
+
+
+</div>

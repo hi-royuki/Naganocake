@@ -1,5 +1,5 @@
 class Public::OrdersController < ApplicationController
-
+ before_action :authenticate_customer!
  before_action  :check_cart, only: [:new]
 
 
@@ -16,7 +16,7 @@ class Public::OrdersController < ApplicationController
     if params[:order][:address_id] == "1"
        @order.postal_code = current_customer.postal_code
        @order.address = current_customer.address
-       @order.name = current_customer.last_name + current_customer.first_name
+       @order.name = current_customer.first_name + current_customer.last_name
 
 
     elsif params[:order][:address_id] == "2"
@@ -25,7 +25,7 @@ class Public::OrdersController < ApplicationController
       @order.name = Address.find(params[:order][:address_select_id]).name
     end
 
-    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }# 商品合計cart_itemsコントローラと一緒
+    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price } # 商品合計cart_itemsコントローラと一緒
 
   end
 
@@ -36,7 +36,9 @@ class Public::OrdersController < ApplicationController
   def create
     @cart_items = current_customer.cart_items
     @order = current_customer.orders.new(order_params)
-    total_payment = 0
+
+    @order.save
+
     @cart_items.each do |cart_item|
       order_detail = OrderDetail.new
       order_detail.item_id = cart_item.item_id
@@ -44,14 +46,12 @@ class Public::OrdersController < ApplicationController
       order_detail.amount = cart_item.amount
       order_detail.order_id = @order.id
       order_detail.save
-      total_payment = cart_item.sum_of_price() + total_payment
     end
 
-     @order.total_payment = total_payment
 
-     @order.save
-     redirect_to  complete_orders_path
      @cart_items.destroy_all
+     redirect_to  complete_orders_path
+
   end
 
   def index
@@ -60,12 +60,12 @@ class Public::OrdersController < ApplicationController
 
   def show
      @order = Order.find(params[:id])
-     @order_items = @order.order_items
+     @order_details = @order.order_details
   end
 
   private
 def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :customer_id, :shipping_cost)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :customer_id, :shipping_cost, :total_payment)
 end
 
  def check_cart

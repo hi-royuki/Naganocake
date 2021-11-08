@@ -1,5 +1,6 @@
 class Admin::GenresController < ApplicationController
 
+  before_action :authenticate_admin!
 
   def index
     # index.htmlのなかに投稿機能
@@ -12,7 +13,10 @@ class Admin::GenresController < ApplicationController
     if @genre.save
       redirect_to admin_genres_path
     else
+      @genres = Genre.all
+      flash[:error] = "ジャンル名を入力してください"
       render :index
+
     end
   end
 

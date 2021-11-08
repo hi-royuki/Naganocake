@@ -1,5 +1,6 @@
 class Public::CartItemsController < ApplicationController
 
+before_action :authenticate_customer!
   def index
     @cart_items = current_customer.cart_items
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
@@ -34,17 +35,17 @@ class Public::CartItemsController < ApplicationController
       params[:cart_item][:amount] = params[:cart_item][:amount].to_i + @cart_item.amount
       @cart_item.update(cart_item_params)
       redirect_to cart_items_path
-    else
+     else
       @cart_item = CartItem.new(cart_item_params)
       @cart_item.customer_id = current_customer.id
-      if @cart_item.save
+     if @cart_item.save
         redirect_to cart_items_path
-      else
+     else
         @item = @cart_item.item
         flash[:error] = "個数を入力してください。"
         redirect_to item_path(@item)
-      end
     end
+     end
   end
 
   private

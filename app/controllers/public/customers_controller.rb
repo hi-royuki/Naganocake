@@ -9,11 +9,12 @@ class Public::CustomersController < ApplicationController
 
   def update
     @customer = current_customer
-    if @customer.update(customer_params)
+   if current_customer.update(customer_params)
+      flash[:notice] = '会員情報を変更しました。'
       redirect_to customers_path(@customer)
-    else
+   else
       render :edit
-    end
+   end
   end
 
   def unsubscribe
@@ -23,7 +24,7 @@ class Public::CustomersController < ApplicationController
   def withdraw
     @customer = current_customer
     @customer.update(is_active: false)# //is_deletedをtrueへ
-    
+
     reset_session # ログアウトさせる
     flash[:notice] = "ありがとうございました。又のご利用を心よりお待ちしております。"
     redirect_to root_path
