@@ -5,7 +5,7 @@
     <div class="d-flex aligin-items-center">
       <h3 class="p-3 md-10 bg-secondary text-white">配送先登録・一覧</h3>
     </div>
-
+  </div>
 
       <%= form_with model: @address, url: addresses_path(@address), local: true do |f| %>
       <table class="table table-borderless">
@@ -46,7 +46,7 @@
         <tbody>
           <% @addresses.each do |address| %>
             <tr>
-              <td><%= address.postal_code %></td>
+              <td>〒<%= address.postal_code %></td>
               <td><%= address.address %></td>
               <td><%= address.name %></td>
               <td><%= link_to "編集する", edit_address_path(address), class: "btn btn-primary" %>
@@ -56,6 +56,6 @@
       </tbody>
       </table>
 
-    </div>
+
   </div>
 </div>

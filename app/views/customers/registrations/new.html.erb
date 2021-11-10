@@ -1,6 +1,8 @@
+<div class="error"><%= flash[:error] %></div>
+
 <div class="container">
   <div class="col-md-10 col-md-offset-1">
-    <%= flash[:error] %>
+
     <div class="d-flex aligin-items-center">
       <h2 class="p-3 md-10 bg-secondary text-white">新規会員登録画面</h2>
     </div>
@@ -10,34 +12,34 @@
     <table class="table table-borderless">
            <tr>
              <th>名前</th>
-             <td><%= f.label :first_name, "(姓)" %><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %></td>
-             <td><%= f.label :last_name, "(名)" %><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %></td>
+             <td><%= f.label :first_name, "(姓)" %><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "佐藤" %></td>
+             <td><%= f.label :last_name, "(名)" %><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: "太郎" %></td>
            </tr>
 
            <tr>
              <th>フリガナ</th>
-             <td><%= f.label :first_name_kana, "(セイ)" %><%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %></td>
-             <td><%= f.label :last_name_kana, "(メイ)" %><%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %></td>
+             <td><%= f.label :first_name_kana, "(セイ)" %><%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", placeholder: "サトウ" %></td>
+             <td><%= f.label :last_name_kana, "(メイ)" %><%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", placeholder: "タロウ" %></td>
            </tr>
 
            <tr>
              <th><%= f.label :email, "メールアドレス", style:"font-weight:bold" %></th>
-             <td><%= f.text_field :email, autofocus: true, autocomplete: "email" %></td>
+             <td><%= f.text_field :email, autofocus: true, autocomplete: "email", placeholder: "111@gmail.com" %></td>
            </tr>
 
            <tr>
              <th><%= f.label :postal_code, "郵便番号(ハイフン無し)", style:"font-weight:bold" %></th>
-             <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %></td>
+             <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", placeholder: "1234567" %></td>
            </tr>
 
            <tr>
              <th><%= f.label :address, "住所", style:"font-weight:bold" %></th>
-             <td><%= f.text_field :address, autofocus: true, autocomplete: "address" %></td>
+             <td><%= f.text_field :address, autofocus: true, autocomplete: "address", placeholder: "東京都渋谷区SATOUマンション101" %></td>
            </tr>
 
            <tr>
              <th><%= f.label :telephone_number, "電話番号(ハイフン無し)", style:"font-weight:bold" %></th>
-             <td><%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number" %></td>
+             <td><%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number", placeholder: "08000000000" %></td>
            </tr>
 
            <tr>

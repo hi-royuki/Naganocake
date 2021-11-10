@@ -1,11 +1,9 @@
 class Public::AddressesController < ApplicationController
-before_action :authenticate_customer!
 
- def index
-    @customer = current_customer
+def index
+    @addresses = current_customer.addresses
     @address = Address.new
-    @addresses = Address.all
- end
+  end
 
   def edit
     @address = Address.find(params[:id])
@@ -14,16 +12,22 @@ before_action :authenticate_customer!
   def create
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
-    @address.save
-    redirect_to addresses_path
-
+    @addresses = Address.all
+    if @address.save
+      flash[:success] = "You have created books successfully. "
+     redirect_to addresses_path
+    else
+     render :index
+    end
   end
 
   def update
     @address = Address.find(params[:id])
-    @address.customer_id = current_customer.id
-    @address.update(address_params)
-    redirect_to addresses_path
+    if @address.update(address_params)
+      redirect_to addresses_path(@address.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -32,9 +36,10 @@ before_action :authenticate_customer!
     redirect_to addresses_path
   end
 
-  private
-
+    private
   def address_params
-     params.require(:address).permit(:postal_code, :address, :name)
+    params.require(:address).permit(:postal_code, :address, :name)
   end
+
+
 end

@@ -18,7 +18,7 @@ before_action :authenticate_customer!
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
-    flash[:notice] = "商品の削除に成功しました。"
+    flash[:notice] = "一部商品を削除しました"
     redirect_to cart_items_path
   end
 
@@ -26,6 +26,7 @@ before_action :authenticate_customer!
   def destroy_all
     @cart_items = current_customer.cart_items
     @cart_items.destroy_all
+    flash[:notice] = "カートが空になりました"
     redirect_to cart_items_path
   end
 
