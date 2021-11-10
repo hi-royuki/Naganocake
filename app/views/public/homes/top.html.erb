@@ -19,7 +19,7 @@
                     <%= attachment_image_tag item, :image, format: 'jpeg', class: "bd-placeholder-img card-img-top", fallback: item.image_id, height: "180" %>
                     <% end %>
                     <h5 class="item-name"><%= item.name %></h5>
-                    <p class="item-price">￥<%= item.price.to_s(:delimited, delimiter: ',') %></p>
+                    <p class="item-price">￥<%= item.price.to_s(:delimited, delimiter: ',') %>（税抜）</p>
                     <%= link_to "この商品を見る", item_path(item.id), class: "btn btn-primary" %>
                </div>
             </div>
